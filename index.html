@@ -8,6 +8,7 @@
 
   <div class="hero">
     <h1>DAVID HENLEY</h1>
+    <p>Email me</p>
   </div>
 
   <style>
@@ -23,6 +24,7 @@
   .hero {
     min-height: 100vh;
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
@@ -33,11 +35,23 @@
     text-shadow: 10px 10px 0 rgba(255, 0, 255, 0.7), -10px 10px 0 rgba(0, 255, 255, 0.7), 10px -10px 0 rgba(255, 255, 0, 0.7), -10px -10px 0 rgba(0, 255, 0, 0.7);
     cursor: pointer;
   }
+
+  p {
+    font-weight: 400;
+    font-size: 2em;
+    color: rgba(255, 0, 255, 0);
+    transition: all 2s;
+  }
+
+  p.active {
+    color: rgba(255, 0, 255, 0.7);
+  }
   </style>
 
 <script>
   const hero = document.querySelector('.hero');
   const text = hero.querySelector('h1');
+  const p = hero.querySelector('p');
   const walk = 100; // 100px
 
   function shadow(e) {
@@ -64,7 +78,17 @@
     window.open('mailto:henleydr@gmail.com');
   }
 
+  function showText(e) {
+    p.classList.add('active');
+  }
+
+  function hideText(e) {
+    p.classList.remove('active');
+  }
+
   hero.addEventListener('mousemove', shadow);
+  text.addEventListener('mouseenter', showText);
+  text.addEventListener('mouseout', hideText);
   text.addEventListener('click', email);
 
 </script>
