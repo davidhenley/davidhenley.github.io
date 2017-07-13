@@ -8,7 +8,9 @@
 
   <div class="hero">
     <h1>DAVID HENLEY</h1>
-    <p>Email me</p>
+    <div class="popup">
+      <p>Email Me</p>
+    </div>
   </div>
 
   <style>
@@ -19,6 +21,7 @@
 
   body {
     margin: 0;
+    max-height: 100vh;
   }
 
   .hero {
@@ -36,21 +39,34 @@
     cursor: pointer;
   }
 
-  h1 + p {
-    font-weight: 400;
-    font-size: 2em;
-    color: rgba(255, 0, 255, 0);
-    transition: all 2s;
+  .popup {
+    background: rgba(0, 255, 255, 0.7);
+    width: 300px;
+    color: white;
+    position: absolute;
+    font-size: 20px;
+    bottom: 0;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: all 1s;
+    overflow: hidden;
+    transform: translateY(100px);
+    opacity: 0;
   }
 
-  h1:hover + p {
-    color: rgba(255, 0, 255, 0.7);
+  h1:hover + .popup {
+    transform: translateY(0);
+    overflow: hidden;
+    opacity: .7;
   }
   </style>
 
 <script>
   const hero = document.querySelector('.hero');
   const text = hero.querySelector('h1');
+  const popup = hero.querySelector('.popup');
+
   const walk = 100; // 100px
 
   function shadow(e) {
