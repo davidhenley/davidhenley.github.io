@@ -7,9 +7,9 @@
 <body>
 
   <div class="hero">
-    <p class="orientation">orientation</p>
+    <!-- <p class="orientation">orientation</p>
     <p class="motion">motion</p>
-    <p class="mozorientation">mozorientation</p>
+    <p class="mozorientation">mozorientation</p> -->
     <h1>DAVID HENLEY</h1>
     <div class="popup">
       <p>Email Me</p>
@@ -110,7 +110,7 @@
     }, true);
   } else {
     window.addEventListener("MozOrientation", e => {
-      mozorientation.textContent = JSON.stringify(e)
+      mozorientation.textContent = JSON.stringify(e);
     }, true);
   }
 
