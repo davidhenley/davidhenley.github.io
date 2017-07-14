@@ -7,10 +7,10 @@
 <body>
 
   <div class="hero">
-    <h1>DAVID HENLEY</h1>
     <p class="orientation">orientation</p>
     <p class="motion">motion</p>
     <p class="mozorientation">mozorientation</p>
+    <h1>DAVID HENLEY</h1>
     <div class="popup">
       <p>Email Me</p>
     </div>
@@ -33,10 +33,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
   }
 
   h1 {
+    color: white;
     font-size: 100px;
     text-shadow: 10px 10px 0 rgba(255, 0, 255, 0.7), -10px 10px 0 rgba(0, 255, 255, 0.7), 10px -10px 0 rgba(255, 255, 0, 0.7), -10px -10px 0 rgba(0, 255, 0, 0.7);
     cursor: pointer;
@@ -102,15 +102,15 @@
   // Accelerometer code
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", e => {
-      orientation.textContent = e.beta, e.gamma;
+      orientation.textContent = JSON.stringify(e);
     }, true);
   } else if (window.DeviceMotionEvent) {
     window.addEventListener('devicemotion', e => {
-      motion.textContent = e.acceleration.x, e.accelation.y;
+      motion.textContent = JSON.stringify(e);
     }, true);
   } else {
     window.addEventListener("MozOrientation", e => {
-      mozorientation.textContent = e.orientation.x, e.orientation.y
+      mozorientation.textContent = JSON.stringify(e)
     }, true);
   }
 
