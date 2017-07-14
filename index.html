@@ -8,6 +8,9 @@
 
   <div class="hero">
     <h1>DAVID HENLEY</h1>
+    <p class="orientation"></p>
+    <p class="motion"></p>
+    <p class="mozorientation"></p>
     <div class="popup">
       <p>Email Me</p>
     </div>
@@ -66,6 +69,9 @@
   const hero = document.querySelector('.hero');
   const text = hero.querySelector('h1');
   const popup = hero.querySelector('.popup');
+  const orientation = document.querySelector('.orientation');
+  const motion = document.querySelector('.motion');
+  const mozorientation = document.querySelector('.mozorientation');
 
   const walk = 100; // 100px
 
@@ -91,6 +97,21 @@
 
   function email(e) {
     window.open('mailto:henleydr@gmail.com');
+  }
+
+  // Accelerometer code
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", e => {
+      orientation.textContent = e.beta, e.gamma;
+    }, true);
+  } else if (window.DeviceMotionEvent) {
+    window.addEventListener('devicemotion', e => {
+      motion.textContent = e.acceleration.x, e.accelation.y;
+    }, true);
+  } else {
+    window.addEventListener("MozOrientation", e => {
+      mozorientation.textContent = e.orientation.x, e.orientation.y
+    }, true);
   }
 
   hero.addEventListener('mousemove', shadow);
